@@ -52,3 +52,7 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.rightSide {
+ float: right;
+}

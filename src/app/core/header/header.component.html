@@ -1,13 +1,14 @@
 <ul>
   <li><a routerLink="/">Home</a></li>
   <ng-container *ngIf="!isLoggedIn">
-    <li><a routerLink="/auth/login">Login</a></li>
-    <li><a routerLink="/auth/register">Register</a></li>
+    <li class="rightSide"><a routerLink="/auth/login">Login</a></li>
+    <li class="rightSide"><a routerLink="/auth/register">Register</a></li>
   </ng-container>
   <ng-container *ngIf="isLoggedIn">
-    <li>
+    <li class="rightSide">
       <a routerLink="/auth/profile">{{ user?.username }}'s profile</a>
     </li>
+    <li class="rightSide"><a routerLink="/auth/logout">Logout</a></li>
   </ng-container>
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn">Products</a>
