@@ -1,1 +1,57 @@
-<p>register works!</p>
+<form #gfg="ngForm">
+  <div class="container">
+    <h1>Register</h1>
+    <hr />
+
+    <label for="username"><b>Username</b></label>
+    <input
+      type="text"
+      placeholder="Enter username"
+      name="username"
+      id="username"
+      required
+      [(ngModel)]="username"
+    />
+
+    <label for="email"><b>Email</b></label>
+    <input
+      type="text"
+      placeholder="Enter Email"
+      name="email"
+      id="email"
+      required
+      [(ngModel)]="email"
+    />
+
+    <label for="psw"><b>Password</b></label>
+    <input
+      type="password"
+      placeholder="Enter Password"
+      name="psw"
+      id="psw"
+      required
+      [(ngModel)]="password"
+    />
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input
+      type="password"
+      placeholder="Repeat Password"
+      name="psw-repeat"
+      id="psw-repeat"
+      required
+      [(ngModel)]="repass"
+    />
+    <hr />
+
+    <button type="submit" class="registerbtn" (click)="registerUser()">
+      Register
+    </button>
+
+    <!-- {{ gfg.value | json }} -->
+  </div>
+
+  <div class="container signin">
+    <p>Already have an account? <a routerLink="/auth/login">Sign in</a>.</p>
+  </div>
+</form>

@@ -1,1 +1,37 @@
-<p>login works!</p>
+<form #gfg="ngForm">
+  <div class="container">
+    <h1>Login</h1>
+    <hr />
+    <label for="email"><b>Email</b></label>
+    <input
+      type="text"
+      placeholder="Enter Email"
+      name="email"
+      id="email"
+      required
+      [(ngModel)]="email"
+    />
+
+    <label for="psw"><b>Password</b></label>
+    <input
+      type="password"
+      placeholder="Enter Password"
+      name="psw"
+      id="psw"
+      required
+      [(ngModel)]="password"
+    />
+
+    <hr />
+
+    <button type="submit" class="registerbtn" (click)="loginUser()">
+      Register
+    </button>
+
+    <!-- {{ gfg.value | json }} -->
+  </div>
+
+  <div class="container signin">
+    <p>Don't have an account? <a routerLink="/auth/register">Register</a>.</p>
+  </div>
+</form>
