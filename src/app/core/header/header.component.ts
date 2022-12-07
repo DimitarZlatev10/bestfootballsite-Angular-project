@@ -1,5 +1,5 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -9,14 +9,26 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
   get isLoggedIn() {
-    return this.authService.isLoggedIn;
+    // return this.authService.isLoggedIn;
+    console.log(localStorage.getItem('id'));
+    return localStorage.getItem('id') !== null;
   }
 
-  get user() {
-    return this.authService.user;
-  }
+  constructor(
+    private authService: AuthService,
+    private httpClient: HttpClient
+  ) {}
 
-  constructor(private authService: AuthService, private router: Router) {}
+  logout() {
+    this.httpClient.post('http://localhost:3000/users/logout', {}).subscribe({
+      next: (value) => {
+        localStorage.clear();
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    });
+  }
 
   ngOnInit(): void {}
 }

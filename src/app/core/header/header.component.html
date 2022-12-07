@@ -6,9 +6,9 @@
   </ng-container>
   <ng-container *ngIf="isLoggedIn">
     <li class="rightSide">
-      <a routerLink="/auth/profile">{{ user?.username }}'s profile</a>
+      <a routerLink="/auth/profile">My Profile</a>
     </li>
-    <li class="rightSide"><a routerLink="/auth/logout">Logout</a></li>
+    <li (click)="logout()" class="rightSide"><a>Logout</a></li>
   </ng-container>
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn">Products</a>
