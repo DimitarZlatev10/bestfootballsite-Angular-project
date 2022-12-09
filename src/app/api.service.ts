@@ -12,4 +12,12 @@ export class ApiService {
   loadUsers() {
     return this.httpClient.get(`${apiUrl}/users`);
   }
+
+  loadShirts() {
+    return this.httpClient.get(`${apiUrl}/shirts`);
+  }
+
+  loadShirtById(id: any) {
+    return this.httpClient.get(`${apiUrl}/shirts/` + id);
+  }
 }

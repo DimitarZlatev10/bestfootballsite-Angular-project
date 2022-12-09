@@ -5,7 +5,7 @@ import * as CryptoJS from 'crypto-js';
   providedIn: 'root',
 })
 export class LocalService {
-  key = '123';
+  key = 'token';
 
   constructor() {}
 

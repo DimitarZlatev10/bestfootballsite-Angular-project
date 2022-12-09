@@ -9,7 +9,12 @@ import { AuthRouterModule } from '../auth/auth-routing.module';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, HomeComponent],
-  imports: [CommonModule, RouterModule,ProductsRoutingModule,AuthRouterModule],
-  exports: [HeaderComponent],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ProductsRoutingModule,
+    AuthRouterModule,
+  ],
+  exports: [HeaderComponent, FooterComponent],
 })
 export class CoreModule {}

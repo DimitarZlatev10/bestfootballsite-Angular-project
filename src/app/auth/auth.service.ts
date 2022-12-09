@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
-import { IUser } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  user: IUser | null = null;
-
   get isLoggedIn() {
-    return this.user !== null;
+    console.log(localStorage.getItem('token'));
+    return localStorage.getItem('token') !== null;
   }
   constructor() {}
 }

@@ -1,27 +1,39 @@
 import { RouterModule, Routes } from '@angular/router';
-import { PanthsComponent } from './panths/panths.component';
-import { ShirtsComponent } from './shirts/shirts.component';
-import { SweatshirtsComponent } from './sweatshirts/sweatshirts.component';
+import { DetailsComponent } from './details/details.component';
+import { ManCityComponent } from './man-city/man-city.component';
 
 const routes: Routes = [
   {
     path: 'products',
     children: [
       {
-        path: 'shirts',
-        component: ShirtsComponent,
+        path: 'english-league',
+        children: [
+          {
+            path: 'man-city',
+            component: ManCityComponent,
+          },
+        ],
       },
       {
-        path: 'sweatshirts',
-        component: SweatshirtsComponent,
+        path: 'spanish-league',
+        children: [],
       },
       {
-        path: 'shorts',
-        component: ShirtsComponent,
+        path: 'german-league',
+        children: [],
       },
       {
-        path: 'panths',
-        component: PanthsComponent,
+        path: 'italian-league',
+        children: [],
+      },
+      {
+        path: 'french-league',
+        children: [],
+      },
+      {
+        path: 'shirts/details/:id',
+        component: DetailsComponent,
       },
     ],
   },

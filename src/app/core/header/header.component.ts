@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,20 +9,16 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
   get isLoggedIn() {
-    // return this.authService.isLoggedIn;
-    console.log(localStorage.getItem('id'));
-    return localStorage.getItem('id') !== null;
+    return localStorage.getItem('token') !== null;
   }
 
-  constructor(
-    private authService: AuthService,
-    private httpClient: HttpClient
-  ) {}
+  constructor(private httpClient: HttpClient, private router: Router) {}
 
   logout() {
     this.httpClient.post('http://localhost:3000/users/logout', {}).subscribe({
       next: (value) => {
         localStorage.clear();
+        this.router.navigate(['/']);
       },
       error: (err) => {
         console.error(err);

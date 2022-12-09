@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { LocalService } from 'src/app/local.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private httpClient: HttpClient,
     private router: Router,
-    private authService: AuthService
+    private localService: LocalService
   ) {}
 
   loginUser() {
@@ -27,13 +27,10 @@ export class LoginComponent implements OnInit {
       })
       .subscribe({
         next: (data) => {
-          this.authService.user = {
-            username: this.email,
-          } as any;
+          this.localService.saveData('token', this.email);
 
+          console.log(localStorage);
           console.log(data);
-          console.log(this.authService.user);
-
           this.router.navigate(['/']);
         },
         error: (err) => {

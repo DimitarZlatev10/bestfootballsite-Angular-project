@@ -1,4 +1,4 @@
-<ul>
+<!-- <ul>
   <li><a routerLink="/">Home</a></li>
   <ng-container *ngIf="!isLoggedIn">
     <li class="rightSide"><a routerLink="/auth/login">Login</a></li>
@@ -19,4 +19,67 @@
       <a routerLink="/products/panths">Panths</a>
     </div>
   </li>
+</ul> -->
+
+<ul id="menu">
+  <li><a routerLink="/">Home</a></li>
+  <li><a href="#">About</a></li>
+  <li>
+    <a href="javascript:void(0)">Products</a>
+    <ul>
+      <li>
+        <a href="javascript:void(0)">English League</a>
+        <ul>
+          <li><a routerLink="/products/english-league/man-city">Man City</a></li>
+          <li><a href="#">Man United</a></li>
+          <li><a href="#">Arsenal</a></li>
+          <li><a href="#">Chelsea</a></li>
+          <li><a href="#">Liverpool</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="javascript:void(0)">Spanish League</a>
+        <ul>
+          <li><a href="#">Barcelona</a></li>
+          <li><a href="#">Real Madrid</a></li>
+          <li><a href="#">Atl. Madrid</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="javascript:void(0)">German League</a>
+        <ul>
+          <li><a href="#">Bayern Munich</a></li>
+          <li><a href="#">Borussia D.</a></li>
+          <li><a href="#">RB Leipzig</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="javascript:void(0)">Italian League</a>
+        <ul>
+          <li><a href="#">Juventus</a></li>
+          <li><a href="#">Milan</a></li>
+          <li><a href="#">Inter</a></li>
+          <li><a href="#">Napoli</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="javascript:void(0)">French League</a>
+        <ul>
+          <li><a href="#">PSG</a></li>
+          <li><a href="#">Marseille</a></li>
+          <li><a href="#">Ol. Lyon</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <div class="rightSide">
+    <ng-container *ngIf="!isLoggedIn">
+      <li><a routerLink="/auth/login">Login</a></li>
+      <li><a routerLink="/auth/register">Register</a></li>
+    </ng-container>
+    <ng-container *ngIf="isLoggedIn">
+      <li (click)="logout()"><a href="#">Logout</a></li>
+      <li><a routerLink="/auth/profile">Profile</a></li>
+    </ng-container>
+  </div>
 </ul>
