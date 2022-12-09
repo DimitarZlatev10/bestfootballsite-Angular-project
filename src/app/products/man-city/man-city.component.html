@@ -1,0 +1,14 @@
+<div *ngFor="let shirt of shirts">
+  <ng-container *ngIf="shirt.team == 'Manchester City'">
+    <div class="card">
+      <img src="{{ shirt.image }}" alt="Football shirt" style="width: 33%" />
+      <h1>{{ shirt.title }}</h1>
+      <p class="price">{{ shirt.price }}$</p>
+      <p>{{ shirt.description }}</p>
+      <!-- <a routerLink="/shirts/{{ shirt._id }}" class="details">Details</a> -->
+      <!-- <a [routerLink]="['/shirts', shirt._id]" class="details">Details</a> -->
+      <!-- <p><button (click)="details(shirt._id)">Details</button></p> -->
+      <p><button (click)="details(shirt._id)">Details</button></p>
+    </div>
+  </ng-container>
+</div>
