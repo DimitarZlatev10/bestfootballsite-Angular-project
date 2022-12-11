@@ -1,0 +1,9 @@
+@media (max-width: 767.98px) {
+  .border-sm-start-none {
+    border-left: none !important;
+  }
+}
+
+h1 {
+  text-align: center;
+}
