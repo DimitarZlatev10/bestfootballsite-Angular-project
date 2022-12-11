@@ -21,7 +21,7 @@ const routes: Routes = [
         canActivate: [guestGuard],
       },
       {
-        path: 'profile',
+        path: 'profileInfo',
         component: ProfileComponent,
         canActivate: [userGuard],
       },

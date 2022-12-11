@@ -9,7 +9,7 @@ import { LocalService } from 'src/app/local.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  email: string | any = '';
+  email: string = '';
   password: string = '';
   errorMessage: string = '';
 
@@ -32,16 +32,10 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.localService.saveData('token', this.email);
-
-          console.log(localStorage['token'])
-          console.log(`descrypted`,this.localService.getData('token'));
-          console.log(data);
           this.router.navigate(['/']);
         },
         error: (err) => {
           this.errorMessage = err.error.message;
-          console.log(this.errorMessage);
-
           console.error(err);
         },
       });

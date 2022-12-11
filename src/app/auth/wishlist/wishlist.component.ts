@@ -11,7 +11,7 @@ import { LocalService } from 'src/app/local.service';
 export class WishlistComponent implements OnInit {
   userId: string | any = null;
   wishlist: any = [];
-  email: any = null;
+  email: string = '';
 
   details(id: string) {
     this.apiService.loadShirtById(id).subscribe({

@@ -17,7 +17,7 @@ export class ApiService {
     return this.httpClient.get(`${apiUrl}/shirts`);
   }
 
-  loadShirtById(id: any) {
+  loadShirtById(id: string | null) {
     return this.httpClient.get(`${apiUrl}/shirts/` + id);
   }
 

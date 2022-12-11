@@ -11,9 +11,8 @@ export class guestGuard implements CanActivate {
   canActivate() {
     if (this.auth.isLoggedIn()) {
       alert('You need to logout to access this action');
-      console.log(`redirect to home`);
       this.router.navigate(['/']);
-
+      
       return false;
     }
     return true;

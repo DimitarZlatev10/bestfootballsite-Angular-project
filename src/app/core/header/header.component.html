@@ -1,26 +1,3 @@
-<!-- <ul>
-  <li><a routerLink="/">Home</a></li>
-  <ng-container *ngIf="!isLoggedIn">
-    <li class="rightSide"><a routerLink="/auth/login">Login</a></li>
-    <li class="rightSide"><a routerLink="/auth/register">Register</a></li>
-  </ng-container>
-  <ng-container *ngIf="isLoggedIn">
-    <li class="rightSide">
-      <a routerLink="/auth/profile">My Profile</a>
-    </li>
-    <li (click)="logout()" class="rightSide"><a>Logout</a></li>
-  </ng-container>
-  <li class="dropdown">
-    <a href="javascript:void(0)" class="dropbtn">Products</a>
-    <div class="dropdown-content">
-      <a routerLink="/products/shirts">Shirts</a>
-      <a routerLink="/products/sweatshirts">Sweatshirts</a>
-      <a routerLink="/products/shorts">Shorts</a>
-      <a routerLink="/products/panths">Panths</a>
-    </div>
-  </li>
-</ul> -->
-
 <ul id="menu">
   <li><a routerLink="/">Home</a></li>
   <li><a href="#">About</a></li>
@@ -81,8 +58,9 @@
     </ng-container>
     <ng-container *ngIf="isLoggedIn">
       <li>
-        <a routerLink="/auth/profile">Profile</a>
+        <a href="javascript:void(0)">Profile</a>
         <ul>
+          <li><a routerLink="/auth/profileInfo">Profile Info</a></li>
           <li><a routerLink="/auth/wishlist">My wishlist</a></li>
           <li (click)="logout()"><a routerLink="/">Logout</a></li>
         </ul>

@@ -25,22 +25,22 @@ const routes: Routes = [
           },
         ],
       },
-      {
-        path: 'spanish-league',
-        children: [],
-      },
-      {
-        path: 'german-league',
-        children: [],
-      },
-      {
-        path: 'italian-league',
-        children: [],
-      },
-      {
-        path: 'french-league',
-        children: [],
-      },
+      // {
+      //   path: 'spanish-league',
+      //   children: [],
+      // },
+      // {
+      //   path: 'german-league',
+      //   children: [],
+      // },
+      // {
+      //   path: 'italian-league',
+      //   children: [],
+      // },
+      // {
+      //   path: 'french-league',
+      //   children: [],
+      // },
       {
         path: 'shirts/details/:id',
         component: DetailsComponent,

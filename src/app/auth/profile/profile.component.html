@@ -11,13 +11,13 @@
     </div>
     <div class="flex">
       <p>Phone:</p>
-      <p>+359 885 888 888</p>
+      <p>+{{userInfo.phoneNumber}}</p>
     </div>
     <div class="flex">
       <p>Wishlist:</p>
       <p>
         You have
-        <a routerLink="/auth/wishlist">{{ userInfo.wishlist.length }}</a> items.
+        <a routerLink="/auth/wishlist">{{ userInfo.wishlist?.length }}</a> items.
       </p>
     </div>
     <!-- <button class="edit-button">Edit</button> -->

@@ -12,9 +12,9 @@ import { LocalService } from 'src/app/local.service';
 export class ProductsTemplateComponent implements OnInit {
   shirts: Array<IShirt> | any = [];
   currentTeam: string | null = '';
-  userId: string | any = null;
+  userId: string | any = '';
 
-  details(id: any) {
+  details(id: string) {
     this.apiService.loadShirtById(id).subscribe({
       next: (value) => {
         console.log(value);
@@ -26,7 +26,7 @@ export class ProductsTemplateComponent implements OnInit {
     });
   }
 
-  addToWishList(id: any) {
+  addToWishList(id: string) {
     console.log(id);
     if (!this.userId) {
       this.router.navigate(['auth/login']);
@@ -43,7 +43,7 @@ export class ProductsTemplateComponent implements OnInit {
     });
   }
 
-  removeFromWishlist(id: any) {
+  removeFromWishlist(id: string) {
     console.log(id);
     if (!this.userId) {
       this.router.navigate(['auth/login']);

@@ -13,8 +13,7 @@ export class userGuard implements CanActivate {
     if (this.auth.isLoggedIn()) {
       return true;
     }
-    alert(`You must login to access this action`)
-    console.log(`redirect to login`);
+    alert(`You must login to access this action`);
     this.router.navigate(['/auth/login']);
     return false;
   }

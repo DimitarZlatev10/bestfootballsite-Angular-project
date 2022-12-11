@@ -9,7 +9,7 @@ import { IShirt } from 'src/app/interfaces/shirt';
   styleUrls: ['./details.component.css'],
 })
 export class DetailsComponent implements OnInit {
-  id: any = null;
+  id: string | null = '';
   item: IShirt[] | any = [];
 
   constructor(private route: ActivatedRoute, private apiService: ApiService) {}
