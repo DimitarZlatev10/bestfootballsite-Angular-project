@@ -13,10 +13,6 @@ export class ApiService {
     return this.httpClient.get(`${apiUrl}/users`);
   }
 
-  getUserId(email: string) {
-    return this.httpClient.post(`${apiUrl}/users/getId`, { email });
-  }
-
   loadShirts() {
     return this.httpClient.get(`${apiUrl}/shirts`);
   }
@@ -27,6 +23,18 @@ export class ApiService {
 
   loadShirtByTeamName(teamName: string | null) {
     return this.httpClient.get(`${apiUrl}/shirts/teamName/` + teamName);
+  }
+
+  getUserId(email: string) {
+    return this.httpClient.post(`${apiUrl}/users/getId`, { email });
+  }
+
+  getUserInfo(email: string) {
+    return this.httpClient.post(`${apiUrl}/users/userInfo`, { email });
+  }
+
+  loadUserWishlist(email: string) {
+    return this.httpClient.post(`${apiUrl}/users/userWishlist`, { email });
   }
 
   addToWishlist(shirtId: string, userId: string) {
