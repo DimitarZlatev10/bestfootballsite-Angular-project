@@ -1,9 +1,14 @@
-<form #gfg="ngForm">
+<div class="error" *ngIf="errorMessage">
+  {{ errorMessage }}
+</div>
+
+<form #gfg="ngForm" (ngSubmit)="loginUser()">
   <div class="container">
     <h1>Login</h1>
     <hr />
     <label for="email"><b>Email</b></label>
     <input
+      #emailInput="ngModel"
       type="text"
       placeholder="Enter Email"
       name="email"
@@ -11,9 +16,14 @@
       required
       [(ngModel)]="email"
     />
-
+    <ng-container
+      *ngIf="!isEmailValid() && (emailInput.dirty || emailInput.touched)"
+    >
+      <p class="error">Please enter valid email(ex. johndoe@gmail.com)</p>
+    </ng-container>
     <label for="psw"><b>Password</b></label>
     <input
+      #passwordInput="ngModel"
       type="password"
       placeholder="Enter Password"
       name="psw"
@@ -22,13 +32,17 @@
       [(ngModel)]="password"
     />
 
+    <ng-container
+      *ngIf="
+        passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)
+      "
+    >
+      <p class="error">password is required</p>
+    </ng-container>
+
     <hr />
 
-    <button type="submit" class="registerbtn" (click)="loginUser()">
-      Login
-    </button>
-
-    <!-- {{ gfg.value | json }} -->
+    <button class="registerbtn">Login</button>
   </div>
 
   <div class="container signin">

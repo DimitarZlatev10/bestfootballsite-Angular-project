@@ -1,10 +1,15 @@
-<form #gfg="ngForm">
+<div class="error" *ngIf="errorMessage">
+  {{ errorMessage }}
+</div>
+
+<form #gfg="ngForm" (ngSubmit)="registerUser()">
   <div class="container">
     <h1>Register</h1>
     <hr />
 
     <label for="username"><b>Username</b></label>
     <input
+      #usernameInput="ngModel"
       type="text"
       placeholder="Enter username"
       name="username"
@@ -13,8 +18,13 @@
       [(ngModel)]="username"
     />
 
+    <ng-container  *ngIf="usernameInput.invalid &&(usernameInput.dirty||usernameInput.touched)">
+      <p class="error">username is required</p>
+    </ng-container>
+
     <label for="email"><b>Email</b></label>
     <input
+      #emailInput="ngModel"
       type="text"
       placeholder="Enter Email"
       name="email"
@@ -22,9 +32,13 @@
       required
       [(ngModel)]="email"
     />
+    <ng-container *ngIf="!isEmailValid() && (emailInput.touched||emailInput.dirty)">
+      <p class="error">Email must be valid(ex. johndoe@gmail.com)</p>
+    </ng-container>
 
     <label for="psw"><b>Password</b></label>
     <input
+      #passwordInput="ngModel"
       type="password"
       placeholder="Enter Password"
       name="psw"
@@ -33,8 +47,13 @@
       [(ngModel)]="password"
     />
 
+    <ng-container *ngIf="isPasswordValid() && (passwordInput.touched||passwordInput.dirty)">
+      <p class="error">password must be at least 6 characters long</p>
+    </ng-container>
+
     <label for="psw-repeat"><b>Repeat Password</b></label>
     <input
+      #repassInput="ngModel"
       type="password"
       placeholder="Repeat Password"
       name="psw-repeat"
@@ -42,13 +61,14 @@
       required
       [(ngModel)]="repass"
     />
+
+    <ng-container *ngIf="!isRepassValid() && (repassInput.touched||repassInput.dirty)">
+      <p class="error">password's must match</p>
+    </ng-container>
+
     <hr />
 
-    <button type="submit" class="registerbtn" (click)="registerUser()">
-      Register
-    </button>
-
-    <!-- {{ gfg.value | json }} -->
+    <button class="registerbtn">Register</button>
   </div>
 
   <div class="container signin">

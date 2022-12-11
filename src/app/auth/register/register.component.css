@@ -8,7 +8,7 @@
   width: 30%;
   border: 3px solid green;
   padding: 16px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Full-width input fields */
@@ -59,4 +59,22 @@ a {
 .signin {
   background-color: #f1f1f1;
   text-align: center;
+}
+
+.info,
+.success,
+.warning,
+.error,
+.validation {
+  border: 1px solid;
+  margin: 10px 0px;
+  padding: 15px 10px 15px 50px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+}
+
+.error {
+  color: #d8000c;
+  background-color: #ffbaba;
+  background-image: url("https://i.imgur.com/GnyDvKN.png");
 }

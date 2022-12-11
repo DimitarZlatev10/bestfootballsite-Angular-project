@@ -2,16 +2,14 @@
   box-sizing: border-box;
 }
 
-/* Add padding to containers */
 .container {
   margin: auto;
   width: 30%;
   border: 3px solid green;
   padding: 16px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Full-width input fields */
 input[type="text"],
 input[type="password"] {
   width: 100%;
@@ -28,13 +26,11 @@ input[type="password"]:focus {
   outline: none;
 }
 
-/* Overwrite default styles of hr */
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
 }
 
-/* Set a style for the submit/register button */
 .registerbtn {
   background-color: #04aa6d;
   color: white;
@@ -50,13 +46,33 @@ hr {
   opacity: 1;
 }
 
-/* Add a blue text color to links */
 a {
   color: dodgerblue;
 }
 
-/* Set a grey background color and center the text of the "sign in" section */
 .signin {
   background-color: #f1f1f1;
   text-align: center;
+}
+
+.info,
+.success,
+.warning,
+.error,
+.validation {
+  border: 1px solid;
+  margin: 10px 0px;
+  padding: 15px 10px 15px 50px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+}
+
+.error {
+  color: #d8000c;
+  background-color: #ffbaba;
+  background-image: url("https://i.imgur.com/GnyDvKN.png");
+}
+
+.error p {
+  color: red;
 }

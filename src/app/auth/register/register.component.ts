@@ -20,6 +20,16 @@ export class RegisterComponent implements OnInit {
     private localService: LocalService
   ) {}
 
+  isEmailValid() {
+    return /^[a-zA-Z0-9]+\@[a-zA-Z]{2,}\.[a-zA-Z0-9]{2,}$/.test(this.email);
+  }
+  isPasswordValid() {
+    return this.password.length < 6;
+  }
+  isRepassValid() {
+      return this.password == this.repass;
+  }
+
   registerUser() {
     this.httpClient
       .post(`http://localhost:3000/users/register`, {
@@ -37,7 +47,7 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['/']);
         },
         error: (err) => {
-          this.errorMessage = err;
+          this.errorMessage = err.error.message;
           console.error(err);
         },
       });
