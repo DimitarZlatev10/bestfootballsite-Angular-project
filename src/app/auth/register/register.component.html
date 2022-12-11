@@ -36,6 +36,20 @@
       <p class="error">Email must be valid(ex. johndoe@gmail.com)</p>
     </ng-container>
 
+    <label for="pnumber"><b>Phone number</b></label>
+    <input
+      #pNumberInput="ngModel"
+      type="text"
+      placeholder="Enter phone number"
+      name="pnumber"
+      id="number"
+      required
+      [(ngModel)]="phoneNumber"
+    />
+    <ng-container *ngIf="!isNumberValid() && (pNumberInput.touched||pNumberInput.dirty)">
+      <p class="error">Phone number must be valid(ex. 000-000-0000)</p>
+    </ng-container>
+
     <label for="psw"><b>Password</b></label>
     <input
       #passwordInput="ngModel"
