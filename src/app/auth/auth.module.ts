@@ -5,9 +5,10 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthRouterModule } from './auth-routing.module';
 import { FormsModule } from '@angular/forms';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, ProfileComponent],
+  declarations: [LoginComponent, RegisterComponent, ProfileComponent, WishlistComponent],
   imports: [CommonModule, AuthRouterModule, FormsModule],
 })
 export class AuthModule {}

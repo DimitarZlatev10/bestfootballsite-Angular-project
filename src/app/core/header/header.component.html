@@ -31,7 +31,9 @@
         <a href="javascript:void(0)">English League</a>
         <ul>
           <li><a routerLink="/products/teams/Manchester City">Man City</a></li>
-          <li><a routerLink="/products/teams/Manchester United">Man United</a></li>
+          <li>
+            <a routerLink="/products/teams/Manchester United">Man United</a>
+          </li>
           <li><a href="#">Arsenal</a></li>
           <li><a href="#">Chelsea</a></li>
           <li><a href="#">Liverpool</a></li>
@@ -78,8 +80,13 @@
       <li><a routerLink="/auth/register">Register</a></li>
     </ng-container>
     <ng-container *ngIf="isLoggedIn">
-      <li (click)="logout()"><a href="#">Logout</a></li>
-      <li><a routerLink="/auth/profile">Profile</a></li>
+      <li>
+        <a routerLink="/auth/profile">Profile</a>
+        <ul>
+          <li><a routerLink="/auth/wishlist">My wishlist</a></li>
+          <li (click)="logout()"><a routerLink="/">Logout</a></li>
+        </ul>
+      </li>
     </ng-container>
   </div>
 </ul>
