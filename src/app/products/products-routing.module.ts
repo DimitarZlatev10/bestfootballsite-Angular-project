@@ -1,17 +1,27 @@
 import { RouterModule, Routes } from '@angular/router';
 import { DetailsComponent } from './details/details.component';
-import { ManCityComponent } from './man-city/man-city.component';
+import { ProductsTemplateComponent } from './products-template/products-template.component';
 
 const routes: Routes = [
   {
     path: 'products',
     children: [
       {
-        path: 'english-league',
+        path: 'teams',
         children: [
           {
-            path: 'man-city',
-            component: ManCityComponent,
+            path: 'Manchester City',
+            component: ProductsTemplateComponent,
+            data: {
+              team: 'Manchester City',
+            },
+          },
+          {
+            path: 'Manchester United',
+            component: ProductsTemplateComponent,
+            data: {
+              team: 'Manchester United',
+            },
           },
         ],
       },
