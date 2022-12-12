@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { IShirt } from 'src/app/interfaces/shirt';
 import { LocalService } from 'src/app/local.service';
@@ -61,7 +61,8 @@ export class ProductsTemplateComponent implements OnInit {
   }
 
   updateTeamsInfo() {
-    this.apiService.loadMostWishlistedShirts().subscribe({
+    this.currentTeam = this.activatedRoute.snapshot.data['team'];
+    this.apiService.loadShirtByTeamName(this.currentTeam).subscribe({
       next: (value) => {
         console.log(value);
         this.shirts = value;
@@ -75,6 +76,7 @@ export class ProductsTemplateComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private localService: LocalService
   ) {}
 
