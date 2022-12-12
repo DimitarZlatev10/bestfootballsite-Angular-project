@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { DetailsComponent } from './details/details.component';
+import { MostWishlistedComponent } from './most-wishlisted/most-wishlisted.component';
 import { ProductsTemplateComponent } from './products-template/products-template.component';
 
 const routes: Routes = [
@@ -44,6 +45,10 @@ const routes: Routes = [
       {
         path: 'shirts/details/:id',
         component: DetailsComponent,
+      },
+      {
+        path: 'shirts/mostWishlisted',
+        component: MostWishlistedComponent,
       },
     ],
   },

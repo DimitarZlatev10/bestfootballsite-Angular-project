@@ -4,9 +4,10 @@ import { RouterModule } from '@angular/router';
 import { DetailsComponent } from './details/details.component';
 import { ProductsTemplateComponent } from './products-template/products-template.component';
 import { FormsModule } from '@angular/forms';
+import { MostWishlistedComponent } from './most-wishlisted/most-wishlisted.component';
 
 @NgModule({
-  declarations: [DetailsComponent, ProductsTemplateComponent],
+  declarations: [DetailsComponent, ProductsTemplateComponent, MostWishlistedComponent],
   imports: [CommonModule, RouterModule, FormsModule],
 })
 export class ProductsModule {}

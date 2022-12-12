@@ -5,14 +5,13 @@ import { IShirt } from 'src/app/interfaces/shirt';
 import { LocalService } from 'src/app/local.service';
 
 @Component({
-  selector: 'app-products-template',
-  templateUrl: './products-template.component.html',
-  styleUrls: ['./products-template.component.css'],
+  selector: 'app-most-wishlisted',
+  templateUrl: './most-wishlisted.component.html',
+  styleUrls: ['./most-wishlisted.component.css'],
 })
-export class ProductsTemplateComponent implements OnInit {
+export class MostWishlistedComponent implements OnInit {
   shirts: Array<IShirt> | any = [];
-  currentTeam: string | null = '';
-  userId: string | any = '';
+  userId: any = '';
 
   details(id: string) {
     this.apiService.loadShirtById(id).subscribe({
@@ -63,8 +62,8 @@ export class ProductsTemplateComponent implements OnInit {
   updateTeamsInfo() {
     this.apiService.loadMostWishlistedShirts().subscribe({
       next: (value) => {
-        console.log(value);
         this.shirts = value;
+        console.log(value);
       },
       error: (err) => {
         console.error(err);
@@ -74,8 +73,8 @@ export class ProductsTemplateComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private router: Router,
-    private localService: LocalService
+    private localService: LocalService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {

@@ -14,7 +14,11 @@ export class ApiService {
   }
 
   loadShirts() {
-    return this.httpClient.get(`${apiUrl}/shirts`);
+    return this.httpClient.get(`${apiUrl}/shirts/all`);
+  }
+
+  loadMostWishlistedShirts() {
+    return this.httpClient.get(`${apiUrl}/shirts/mostWishlisted`);
   }
 
   loadShirtById(id: string | null) {

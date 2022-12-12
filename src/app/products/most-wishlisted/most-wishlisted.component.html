@@ -1,0 +1,70 @@
+<ng-container *ngIf="shirts.length == 0">
+  <h1>There are no products for this team</h1>
+</ng-container>
+
+<section style="background-color: #eee">
+  <div class="container py-5">
+    <div *ngFor="let shirt of shirts" class="row justify-content-center mb-3">
+      <!-- <ng-container *ngIf="shirt.team == currentTeam"> -->
+      <div class="col-md-12 col-xl-10">
+        <div class="card shadow-0 border rounded-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                  <img src="{{ shirt.image }}" class="w-100" />
+                  <a href="#!">
+                    <div class="hover-overlay">
+                      <div
+                        class="mask"
+                        style="background-color: rgba(253, 253, 253, 0.15)"
+                      ></div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-6 col-xl-6">
+                <h2>{{ shirt.title }}</h2>
+                <h4 class="mb-1 me-1">Price: ${{ shirt.price }}</h4>
+              </div>
+              <div
+                class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start"
+              >
+                <div class="d-flex flex-column mt-4">
+                  <button
+                    class="btn btn-primary btn-sm"
+                    type="button"
+                    (click)="details(shirt._id)"
+                  >
+                    Details
+                  </button>
+
+                  <ng-container *ngIf="shirt.wishlist.includes(userId)">
+                    <button
+                      class="btn btn-outline-primary btn-sm mt-2"
+                      type="button"
+                      (click)="removeFromWishlist(shirt._id)"
+                    >
+                      Remove from wishlist
+                    </button>
+                  </ng-container>
+
+                  <ng-container *ngIf="!shirt.wishlist.includes(userId)">
+                    <button
+                      class="btn btn-outline-primary btn-sm mt-2"
+                      type="button"
+                      (click)="addToWishList(shirt._id)"
+                    >
+                      Add to wishlist
+                    </button>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- </ng-container> -->
+    </div>
+  </div>
+</section>
