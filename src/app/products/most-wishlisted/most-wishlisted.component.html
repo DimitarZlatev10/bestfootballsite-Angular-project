@@ -1,11 +1,11 @@
-<ng-container *ngIf="shirts.length == 0">
-  <h1>There are no products for this team</h1>
-</ng-container>
-
 <section style="background-color: #eee">
   <div class="container py-5">
+    <ng-container *ngIf="shirts.length == 0">
+      <h1>There are no products for this team</h1>
+    </ng-container>
     <div *ngFor="let shirt of shirts" class="row justify-content-center mb-3">
       <!-- <ng-container *ngIf="shirt.team == currentTeam"> -->
+
       <div class="col-md-12 col-xl-10">
         <div class="card shadow-0 border rounded-3">
           <div class="card-body">

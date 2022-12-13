@@ -24,6 +24,34 @@ const routes: Routes = [
               team: 'Manchester United',
             },
           },
+          {
+            path: 'Arsenal',
+            component: ProductsTemplateComponent,
+            data: {
+              team: 'Arsenal',
+            },
+          },
+          {
+            path: 'Chelsea',
+            component: ProductsTemplateComponent,
+            data: {
+              team: 'Chelsea',
+            },
+          },
+          {
+            path: 'Liverpool',
+            component: ProductsTemplateComponent,
+            data: {
+              team: 'Liverpool',
+            },
+          },
+          {
+            path: 'Barcelona',
+            component: ProductsTemplateComponent,
+            data: {
+              team: 'Barcelona',
+            },
+          },
         ],
       },
       // {
