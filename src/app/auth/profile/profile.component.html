@@ -10,16 +10,86 @@
       <p>{{ userInfo.email }}</p>
     </div>
     <div class="flex">
+      <p>Balance:</p>
+      <p>${{ userInfo.balance }}</p>
+    </div>
+    <div class="flex">
       <p>Phone:</p>
-      <p>+{{userInfo.phoneNumber}}</p>
+      <p>+{{ userInfo.phoneNumber }}</p>
     </div>
     <div class="flex">
       <p>Wishlist:</p>
       <p>
         You have
-        <a routerLink="/auth/wishlist">{{ userInfo.wishlist?.length }}</a> items.
+        <a routerLink="/auth/wishlist">{{ userInfo.wishlist?.length }}</a>
+        items.
       </p>
     </div>
-    <!-- <button class="edit-button">Edit</button> -->
+    <!-- check if user has added credit card -->
+    <ng-container *ngIf="userInfo.creditCardInfo?.length > 0">
+      <h2>Add balance to your account</h2>
+      <div>
+        <label for="amount">Enter amount:</label>
+        <input #amountInput="ngModel" name="amount" type="number" style="width: 15%" [(ngModel)]="amount" />
+        <ng-container
+          *ngIf="!isAmountValid() && (amountInput.dirty || amountInput.touched)"
+        >
+          <p style="color: red">Amount must be a positive number</p>
+        </ng-container>
+        <ng-container *ngIf="isAmountTooMuch()">
+          <p style="color: red">You can add only up to 1000$ at a time!</p>
+        </ng-container>
+      </div>
+      <div>
+        <label for="pin">Enter your pin:</label>
+        <input #verifyPinInput="ngModel" name="pin" type="text" style="width: 15%" [(ngModel)]="verifyPin" />
+        <ng-container
+          *ngIf="!isVerifyPinValid() && (verifyPinInput.dirty ||verifyPinInput.touched)"
+        >
+          <p style="color: red">Your pin must be exactly 4 numbers</p>
+        </ng-container>
+      </div>
+      <div>
+        <button class="green-button" (click)="addAmount()">Add to your balance</button>
+      </div>
+    </ng-container>
+    <!-- check if user hasnt added credit card  -->
+    <ng-container *ngIf="userInfo.creditCardInfo?.length == 0">
+      <h2>Add creadit card</h2>
+      <div>
+        <label for="fullName">Full Name:</label>
+        <input
+          #fullNameInput="ngModel"
+          name="fullName"
+          type="text"
+          style="width: 50%"
+          [(ngModel)]="fullName"
+        />
+
+        <ng-container
+          *ngIf="
+            !isFullNameValid() && (fullNameInput.touched || fullNameInput.dirty)
+          "
+        >
+          <p style="color: red">You must enter valid names</p>
+        </ng-container>
+      </div>
+      <div>
+        <label for="pin">pin code:</label>
+        <input
+          #pinInput="ngModel"
+          name="pin"
+          type="text"
+          style="width: 50%"
+          [(ngModel)]="pin"
+        />
+        <ng-container
+          *ngIf="!isPinValid() && (pinInput.dirty || pinInput.touched)"
+        >
+          <p style="color: red">Your pin must be exactly 4 numbers</p>
+        </ng-container>
+      </div>
+      <button class="green-button" (click)="addCard()">Add card</button>
+    </ng-container>
   </div>
 </div>

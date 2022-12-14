@@ -11,13 +11,74 @@ import { LocalService } from 'src/app/local.service';
 export class ProfileComponent implements OnInit {
   userInfo: Array<IUser> | any = [];
   email: string = '';
+  fullName: string = '';
+  pin: string = '';
+  verifyPin: string = '';
+  amount: number;
 
-  constructor(
-    private apiService: ApiService,
-    private localService: LocalService
-  ) {}
+  isFullNameValid() {
+    return /^[a-zA-Z]{3,} [a-zA-Z]{3,}$/.test(this.fullName);
+  }
 
-  ngOnInit(): void {
+  isPinValid() {
+    return /^[0-9]{4}$/.test(this.pin);
+  }
+
+  isVerifyPinValid() {
+    return /^[0-9]{4}$/.test(this.verifyPin);
+  }
+
+  isAmountValid() {
+    return this.amount > 0 ? true : false;
+  }
+
+  isAmountTooMuch() {
+    return this.amount > 1000 ? true : false;
+  }
+
+  addCard() {
+    if (!this.isFullNameValid()) {
+      return;
+    }
+
+    if (!this.isPinValid()) {
+      return;
+    }
+
+    this.apiService
+      .addCardInfo(this.userInfo._id, this.fullName, this.pin)
+      .subscribe({
+        next: (value) => {
+          console.log(value);
+          this.updatePage();
+        },
+        error: (err) => {
+          console.error(err);
+        },
+      });
+  }
+
+  addAmount() {
+    if (!this.isAmountValid()) {
+      return;
+    }
+
+    if (this.isAmountTooMuch()) {
+      return;
+    }
+
+    if (this.userInfo.creditCardInfo[0].pin !== this.verifyPin) {
+      return;
+    }
+
+    this.apiService.addAmount(this.userInfo._id, this.amount).subscribe({
+      next: (value) => {
+        this.updatePage();
+      },
+    });
+  }
+
+  updatePage() {
     this.email = this.localService.getData('token');
     this.apiService.getUserInfo(this.email).subscribe({
       next: (value) => {
@@ -28,5 +89,14 @@ export class ProfileComponent implements OnInit {
         console.error(err);
       },
     });
+  }
+
+  constructor(
+    private apiService: ApiService,
+    private localService: LocalService
+  ) {}
+
+  ngOnInit(): void {
+    this.updatePage();
   }
 }

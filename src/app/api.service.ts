@@ -54,4 +54,16 @@ export class ApiService {
       userId,
     });
   }
+
+  addCardInfo(id: string, fullName: string, pin: string) {
+    return this.httpClient.post(`${apiUrl}/users/addCard`, {
+      id,
+      fullName,
+      pin,
+    });
+  }
+
+  addAmount(id: string, amount: number) {
+    return this.httpClient.post(`${apiUrl}/users/addAmount`, { id, amount });
+  }
 }
