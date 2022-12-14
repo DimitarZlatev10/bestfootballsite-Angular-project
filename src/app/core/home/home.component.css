@@ -2,6 +2,7 @@
   height: 700px;
   padding-top: 150px;
   background: #e8eced url(../../../assets/home-background.jpeg) no-repeat center;
+  display: flex;
 }
 
 #hero-image h2 {

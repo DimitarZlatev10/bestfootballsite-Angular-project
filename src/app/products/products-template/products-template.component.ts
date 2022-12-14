@@ -13,9 +13,9 @@ import { interval } from 'rxjs/internal/observable/interval';
   styleUrls: ['./products-template.component.css'],
 })
 export class ProductsTemplateComponent implements OnInit, OnDestroy {
-  shirts: Array<IShirt> | any = [];
-  currentTeam: string | null = '';
-  userId: string | any = '';
+  shirts: Array<IShirt> | any;
+  currentTeam: string | null;
+  userId: string | any;
   timeInterval: Subscription;
 
   details(id: string) {
@@ -66,16 +66,7 @@ export class ProductsTemplateComponent implements OnInit, OnDestroy {
 
   updateTeamsInfo() {
     this.currentTeam = this.activatedRoute.snapshot.data['team'];
-    // this.apiService.loadShirtByTeamName(this.currentTeam).subscribe({
-    //   next: (value) => {
-    //     console.log(value);
-    //     this.shirts = value;
-    //   },
-    //   error: (err) => {
-    //     console.error(err);
-    //   },
-    // });
-    this.timeInterval = interval(50000)
+    this.timeInterval = interval(500000)
       .pipe(
         startWith(0),
         switchMap(() => this.apiService.loadShirtByTeamName(this.currentTeam))
@@ -84,6 +75,7 @@ export class ProductsTemplateComponent implements OnInit, OnDestroy {
         next: (value) => {
           console.log(value);
           this.shirts = value;
+          console.log(`aa`, this.shirts);
         },
       });
   }

@@ -1,12 +1,16 @@
 <h1>My Wishlist</h1>
 
-<ng-container *ngIf="wishlist.length == 0">
+<!-- <ng-container *ngIf="wishlist.length == 0">
   <h4>Your wishlist is empty!</h4>
-</ng-container>
+</ng-container> -->
 
-<ng-container *ngIf="wishlist.length > 0">
+<!-- <ng-container *ngIf="wishlist.length > 0"> -->
   <section style="background-color: #eee">
     <div class="container py-5">
+      
+      <ng-container *ngIf="wishlist.length == 0">
+        <h1>Your wishlist is empty!</h1>
+      </ng-container>
       <div
         *ngFor="let shirt of wishlist"
         class="row justify-content-center mb-3"
@@ -66,4 +70,4 @@
       </div>
     </div>
   </section>
-</ng-container>
+<!-- </ng-container> -->
