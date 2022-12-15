@@ -5,6 +5,7 @@ export interface IShirt {
   description: string;
   price: number;
   team: string;
+  inStock: number;
   wishlist: [];
   __v: number;
 }

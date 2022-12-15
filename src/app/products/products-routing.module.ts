@@ -1,4 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
+import { PageNotFoundComponent } from '../core/page-not-found/page-not-found.component';
 import { DetailsComponent } from './details/details.component';
 import { MostWishlistedComponent } from './most-wishlisted/most-wishlisted.component';
 import { ProductsTemplateComponent } from './products-template/products-template.component';
@@ -147,6 +148,10 @@ const routes: Routes = [
         component: MostWishlistedComponent,
       },
     ],
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
   },
 ];
 
