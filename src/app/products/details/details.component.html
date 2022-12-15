@@ -68,30 +68,38 @@
           <hr class="my-0" />
 
           <ng-container *ngIf="isLogged">
-            <div class="card-body">
-              <div
-                class="d-flex justify-content-between align-items-center pb-2 mb-1"
-              >
-                <label class="text-dark fw-bold" for="quantity"
-                  >Enter quantity:
-                  <input
-                    name="quantity"
-                    class="text-dark fw-bold"
-                    type="number"
-                    min="1"
-                    style="width: 20%"
-                    [(ngModel)]="quantity"
-                  />
-                </label>
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  (click)="buyButton()"
+            <ng-container *ngIf="item.inStock > 0">
+              <div class="card-body">
+                <div
+                  class="d-flex justify-content-between align-items-center pb-2 mb-1"
                 >
-                  Buy now
-                </button>
+                  <label class="text-dark fw-bold" for="quantity"
+                    >Enter quantity:
+                    <input
+                      name="quantity"
+                      class="text-dark fw-bold"
+                      type="number"
+                      min="1"
+                      style="width: 20%"
+                      [(ngModel)]="quantity"
+                    />
+                    <p style="color: red;" *ngIf="errorMessage">{{errorMessage}}</p>
+                  </label>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    (click)="buyButton()"
+                  >
+                    Buy now
+                  </button>
+                </div>
               </div>
-            </div>
+            </ng-container>
+            <ng-container *ngIf="item.inStock == 0">
+              <div class="card-body">
+                <p class="text-dark fw-bold">This product is out of stock!</p>
+              </div>
+            </ng-container>
           </ng-container>
 
           <ng-container *ngIf="!isLogged">

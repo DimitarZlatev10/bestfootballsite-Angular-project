@@ -48,6 +48,7 @@
         >
           <p style="color: red">Your pin must be exactly 4 numbers</p>
         </ng-container>
+        <p style="color: red" *ngIf="errorMessage">{{errorMessage}}</p>
       </div>
       <div>
         <button class="green-button" (click)="addAmount()">Add to your balance</button>

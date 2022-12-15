@@ -66,4 +66,12 @@ export class ApiService {
   addAmount(id: string, amount: number) {
     return this.httpClient.post(`${apiUrl}/users/addAmount`, { id, amount });
   }
+
+  buyProduct(userId: string, shirtId: string, quantity: number) {
+    return this.httpClient.post(`${apiUrl}/shirts/buyProduct`, {
+      userId,
+      shirtId,
+      quantity,
+    });
+  }
 }

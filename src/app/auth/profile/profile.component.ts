@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
   pin: string = '';
   verifyPin: string = '';
   amount: number;
+  errorMessage: string;
 
   isFullNameValid() {
     return /^[a-zA-Z]{3,} [a-zA-Z]{3,}$/.test(this.fullName);
@@ -68,8 +69,11 @@ export class ProfileComponent implements OnInit {
     }
 
     if (this.userInfo.creditCardInfo[0].pin !== this.verifyPin) {
+      this.errorMessage = 'Incorrect pin';
       return;
     }
+
+    this.errorMessage = '';
 
     this.apiService.addAmount(this.userInfo._id, this.amount).subscribe({
       next: (value) => {
