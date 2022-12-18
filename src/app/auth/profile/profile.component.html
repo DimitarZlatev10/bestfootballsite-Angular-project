@@ -14,49 +14,66 @@
       <p>${{ userInfo.balance }}</p>
     </div>
     <div class="flex">
-      <p>Phone:</p>
-      <p>+{{ userInfo.phoneNumber }}</p>
-    </div>
-    <div class="flex">
       <p>Wishlist:</p>
       <p>
         You have
-        <a routerLink="/auth/wishlist">{{ userInfo.wishlist?.length }}</a>
-        items.
+        <a routerLink="/auth/wishlist">{{ userInfo.wishlist?.length }} </a>
+        {{ userInfo.wishlist?.length == 1 ? "item" : "items" }}
       </p>
     </div>
     <!-- check if user has added credit card -->
     <ng-container *ngIf="userInfo.creditCardInfo?.length > 0">
-      <h2>Add balance to your account</h2>
+      <form #myForm="ngForm">
+        <h2>Add balance to your account</h2>
+        <div>
+          <label for="amount">Enter amount:</label>
+          <input
+            #amountInput="ngModel"
+            name="amount"
+            type="number"
+            style="width: 15%"
+            [(ngModel)]="amount"
+          />
+          <ng-container
+            *ngIf="
+              !isAmountValid() && (amountInput.dirty || amountInput.touched)
+            "
+          >
+            <p style="color: red">Amount must be a positive number</p>
+          </ng-container>
+          <ng-container *ngIf="isAmountTooMuch()">
+            <p style="color: red">You can add only up to 1000$ at a time!</p>
+          </ng-container>
+        </div>
+        <div>
+          <label for="pin">Enter your pin:</label>
+          <input
+            #verifyPinInput="ngModel"
+            name="pin"
+            type="text"
+            style="width: 15%"
+            [(ngModel)]="verifyPin"
+          />
+          <ng-container
+            *ngIf="
+              !isVerifyPinValid() &&
+              (verifyPinInput.dirty || verifyPinInput.touched)
+            "
+          >
+            <p style="color: red">Your pin must be exactly 4 numbers</p>
+          </ng-container>
+          <p style="color: red" *ngIf="errorMessage">{{ errorMessage }}</p>
+        </div>
+      </form>
       <div>
-        <label for="amount">Enter amount:</label>
-        <input #amountInput="ngModel" name="amount" type="number" style="width: 15%" [(ngModel)]="amount" />
-        <ng-container
-          *ngIf="!isAmountValid() && (amountInput.dirty || amountInput.touched)"
-        >
-          <p style="color: red">Amount must be a positive number</p>
-        </ng-container>
-        <ng-container *ngIf="isAmountTooMuch()">
-          <p style="color: red">You can add only up to 1000$ at a time!</p>
-        </ng-container>
-      </div>
-      <div>
-        <label for="pin">Enter your pin:</label>
-        <input #verifyPinInput="ngModel" name="pin" type="text" style="width: 15%" [(ngModel)]="verifyPin" />
-        <ng-container
-          *ngIf="!isVerifyPinValid() && (verifyPinInput.dirty ||verifyPinInput.touched)"
-        >
-          <p style="color: red">Your pin must be exactly 4 numbers</p>
-        </ng-container>
-        <p style="color: red" *ngIf="errorMessage">{{errorMessage}}</p>
-      </div>
-      <div>
-        <button class="green-button" (click)="addAmount()">Add to your balance</button>
+        <button class="green-button" (click)="addAmount(); myForm.resetForm()">
+          Add to your balance
+        </button>
       </div>
     </ng-container>
     <!-- check if user hasnt added credit card  -->
     <ng-container *ngIf="userInfo.creditCardInfo?.length == 0">
-      <h2>Add creadit card</h2>
+      <h2>Add credit card</h2>
       <div>
         <label for="fullName">Full Name:</label>
         <input
@@ -93,4 +110,21 @@
       <button class="green-button" (click)="addCard()">Add card</button>
     </ng-container>
   </div>
+</div>
+
+<h2>
+  {{
+    userInfo.transactions?.length == 0
+      ? "You haven't made any transactions yet"
+      : "Your transactions history"
+  }}
+</h2>
+<div class="table-wrapper">
+  <table class="fl-table">
+    <tbody>
+      <tr *ngFor="let transaction of userInfo.transactions">
+        <td>{{ transaction }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

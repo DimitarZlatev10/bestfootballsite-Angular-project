@@ -50,7 +50,6 @@ export class ProfileComponent implements OnInit {
       .addCardInfo(this.userInfo._id, this.fullName, this.pin)
       .subscribe({
         next: (value) => {
-          console.log(value);
           this.updatePage();
         },
         error: (err) => {
@@ -86,7 +85,6 @@ export class ProfileComponent implements OnInit {
     this.email = this.localService.getData('token');
     this.apiService.getUserInfo(this.email).subscribe({
       next: (value) => {
-        console.log(value);
         this.userInfo = value;
       },
       error: (err) => {
