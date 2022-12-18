@@ -12,7 +12,6 @@ export class RegisterComponent implements OnInit {
   errorMessage: string = '';
   username: string = '';
   email: string = '';
-  phoneNumber: string = '';
   password: string = '';
   repass: string = '';
 
@@ -23,8 +22,8 @@ export class RegisterComponent implements OnInit {
   ) {}
 
 
-  isNumberValid(){
-    return /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(this.phoneNumber)
+  isUserNameValid() {
+    return /.{3,}/.test(this.username);
   }
 
   isEmailValid() {
@@ -38,11 +37,32 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser() {
+    if (!this.isUserNameValid()) {
+      this.errorMessage = 'Username is invalid';
+      return;
+    }
+
+    if (!this.isEmailValid()) {
+      this.errorMessage = 'Email is invalid';
+      return;
+    }
+
+    if (this.isPasswordValid()) {
+      this.errorMessage = 'Password is invalid';
+      return;
+    }
+
+    if (!this.isRepassValid()) {
+      this.errorMessage = "Passwords don't match";
+      return;
+    }
+
+    this.errorMessage = '';
+
     this.httpClient
       .post(`http://localhost:3000/users/register`, {
         username: this.username,
         email: this.email,
-        phoneNumber: this.phoneNumber,
         password: this.password,
         repass: this.repass,
       })
@@ -52,7 +72,7 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['/']);
         },
         error: (err) => {
-          this.errorMessage = err.error.message;
+          // this.errorMessage = err.error.message;
           console.error(err);
         },
       });

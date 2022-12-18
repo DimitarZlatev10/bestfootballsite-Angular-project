@@ -1,4 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
+import { PageNotFoundComponent } from '../core/page-not-found/page-not-found.component';
 import { guestGuard } from '../shared/guest.guard';
 import { userGuard } from '../shared/user.guard';
 import { LoginComponent } from './login/login.component';
@@ -31,6 +32,10 @@ const routes: Routes = [
         canActivate: [userGuard],
       },
     ],
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
   },
 ];
 

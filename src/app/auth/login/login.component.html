@@ -19,7 +19,7 @@
     <ng-container
       *ngIf="!isEmailValid() && (emailInput.dirty || emailInput.touched)"
     >
-      <p class="error">Please enter valid email(ex. johndoe@gmail.com)</p>
+      <p style="color: red;">Please enter valid email(ex. johndoe@gmail.com)</p>
     </ng-container>
     <label for="psw"><b>Password</b></label>
     <input
@@ -37,7 +37,7 @@
         passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)
       "
     >
-      <p class="error">password is required</p>
+      <p style="color: red;">password is required</p>
     </ng-container>
 
     <hr />

@@ -16,24 +16,21 @@ export class WishlistComponent implements OnInit {
   details(id: string) {
     this.apiService.loadShirtById(id).subscribe({
       next: (value) => {
-        console.log(value);
         this.router.navigate(['products/shirts/details/' + id]);
       },
       error: (err) => {
-        console.log(err);
+        console.error(err);
       },
     });
   }
 
   removeFromWishlist(id: string) {
-    console.log(id);
     if (!this.userId) {
       this.router.navigate(['auth/login']);
       return;
     }
     this.apiService.removeFromWishlist(id, this.userId).subscribe({
       next: (value) => {
-        console.log(value);
         this.updateInfo();
       },
       error: (err) => {
@@ -46,7 +43,6 @@ export class WishlistComponent implements OnInit {
     this.apiService.loadUserWishlist(this.email).subscribe({
       next: (value) => {
         this.wishlist = value;
-        console.log(this.wishlist);
       },
       error: (err) => {
         console.error(err);
@@ -66,7 +62,6 @@ export class WishlistComponent implements OnInit {
       this.apiService.getUserId(this.email).subscribe({
         next: (value) => {
           this.userId = value;
-          console.log(`userId`, this.userId);
         },
         error: (err) => {
           console.error(err);
@@ -74,15 +69,6 @@ export class WishlistComponent implements OnInit {
       });
 
       this.updateInfo();
-      // this.apiService.loadUserWishlist(email).subscribe({
-      //   next: (value) => {
-      //     this.wishlist = value;
-      //     console.log(this.wishlist);
-      //   },
-      //   error: (err) => {
-      //     console.error(err);
-      //   },
-      // });
     }
   }
 }

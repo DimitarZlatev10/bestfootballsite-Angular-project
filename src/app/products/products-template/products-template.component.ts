@@ -21,24 +21,21 @@ export class ProductsTemplateComponent implements OnInit, OnDestroy {
   details(id: string) {
     this.apiService.loadShirtById(id).subscribe({
       next: (value) => {
-        console.log(value);
         this.router.navigate(['products/shirts/details/' + id]);
       },
       error: (err) => {
-        console.log(err);
+        console.error(err);
       },
     });
   }
 
   addToWishList(id: string) {
-    console.log(id);
     if (!this.userId) {
       this.router.navigate(['auth/login']);
       return;
     }
     this.apiService.addToWishlist(id, this.userId).subscribe({
       next: (value) => {
-        console.log(value);
         this.updateTeamsInfo();
       },
       error: (err) => {
@@ -48,14 +45,12 @@ export class ProductsTemplateComponent implements OnInit, OnDestroy {
   }
 
   removeFromWishlist(id: string) {
-    console.log(id);
     if (!this.userId) {
       this.router.navigate(['auth/login']);
       return;
     }
     this.apiService.removeFromWishlist(id, this.userId).subscribe({
       next: (value) => {
-        console.log(value);
         this.updateTeamsInfo();
       },
       error: (err) => {
@@ -73,9 +68,7 @@ export class ProductsTemplateComponent implements OnInit, OnDestroy {
       )
       .subscribe({
         next: (value) => {
-          console.log(value);
           this.shirts = value;
-          console.log(`aa`, this.shirts);
         },
       });
   }
@@ -95,7 +88,6 @@ export class ProductsTemplateComponent implements OnInit, OnDestroy {
       this.apiService.getUserId(email).subscribe({
         next: (value) => {
           this.userId = value;
-          console.log(this.userId);
         },
         error: (err) => {
           console.error(err);

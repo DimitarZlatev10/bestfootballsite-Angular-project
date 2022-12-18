@@ -16,24 +16,23 @@ export class MostWishlistedComponent implements OnInit {
   details(id: string) {
     this.apiService.loadShirtById(id).subscribe({
       next: (value) => {
-        console.log(value);
         this.router.navigate(['products/shirts/details/' + id]);
       },
       error: (err) => {
-        console.log(err);
+        console.error(err);
       },
     });
   }
 
   addToWishList(id: string) {
-    console.log(id);
+
     if (!this.userId) {
       this.router.navigate(['auth/login']);
       return;
     }
     this.apiService.addToWishlist(id, this.userId).subscribe({
       next: (value) => {
-        console.log(value);
+
         this.updateTeamsInfo();
       },
       error: (err) => {
@@ -43,14 +42,14 @@ export class MostWishlistedComponent implements OnInit {
   }
 
   removeFromWishlist(id: string) {
-    console.log(id);
+
     if (!this.userId) {
       this.router.navigate(['auth/login']);
       return;
     }
     this.apiService.removeFromWishlist(id, this.userId).subscribe({
       next: (value) => {
-        console.log(value);
+
         this.updateTeamsInfo();
       },
       error: (err) => {
@@ -63,7 +62,7 @@ export class MostWishlistedComponent implements OnInit {
     this.apiService.loadMostWishlistedShirts().subscribe({
       next: (value) => {
         this.shirts = value;
-        console.log(value);
+
       },
       error: (err) => {
         console.error(err);
@@ -85,7 +84,6 @@ export class MostWishlistedComponent implements OnInit {
       this.apiService.getUserId(email).subscribe({
         next: (value) => {
           this.userId = value;
-          console.log(this.userId);
         },
         error: (err) => {
           console.error(err);

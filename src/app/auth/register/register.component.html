@@ -18,8 +18,12 @@
       [(ngModel)]="username"
     />
 
-    <ng-container  *ngIf="usernameInput.invalid &&(usernameInput.dirty||usernameInput.touched)">
-      <p class="error">username is required</p>
+    <ng-container
+      *ngIf="
+        !isUserNameValid() && (usernameInput.dirty || usernameInput.touched)
+      "
+    >
+      <p style="color: red;">username must be at least 3 characters long</p>
     </ng-container>
 
     <label for="email"><b>Email</b></label>
@@ -32,22 +36,10 @@
       required
       [(ngModel)]="email"
     />
-    <ng-container *ngIf="!isEmailValid() && (emailInput.touched||emailInput.dirty)">
-      <p class="error">Email must be valid(ex. johndoe@gmail.com)</p>
-    </ng-container>
-
-    <label for="pnumber"><b>Phone number</b></label>
-    <input
-      #pNumberInput="ngModel"
-      type="text"
-      placeholder="Enter phone number"
-      name="pnumber"
-      id="number"
-      required
-      [(ngModel)]="phoneNumber"
-    />
-    <ng-container *ngIf="!isNumberValid() && (pNumberInput.touched||pNumberInput.dirty)">
-      <p class="error">Phone number must be valid(ex. 000-000-0000)</p>
+    <ng-container
+      *ngIf="!isEmailValid() && (emailInput.touched || emailInput.dirty)"
+    >
+      <p style="color: red;">Email must be valid(ex. johndoe@gmail.com)</p>
     </ng-container>
 
     <label for="psw"><b>Password</b></label>
@@ -61,8 +53,12 @@
       [(ngModel)]="password"
     />
 
-    <ng-container *ngIf="isPasswordValid() && (passwordInput.touched||passwordInput.dirty)">
-      <p class="error">password must be at least 6 characters long</p>
+    <ng-container
+      *ngIf="
+        isPasswordValid() && (passwordInput.touched || passwordInput.dirty)
+      "
+    >
+      <p style="color: red;">password must be at least 6 characters long</p>
     </ng-container>
 
     <label for="psw-repeat"><b>Repeat Password</b></label>
@@ -76,8 +72,10 @@
       [(ngModel)]="repass"
     />
 
-    <ng-container *ngIf="!isRepassValid() && (repassInput.touched||repassInput.dirty)">
-      <p class="error">password's must match</p>
+    <ng-container
+      *ngIf="!isRepassValid() && (repassInput.touched || repassInput.dirty)"
+    >
+      <p style="color: red;">password's must match</p>
     </ng-container>
 
     <hr />
