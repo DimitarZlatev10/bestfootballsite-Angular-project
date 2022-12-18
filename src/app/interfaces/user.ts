@@ -3,7 +3,6 @@ export interface IUser {
   username: string;
   email: string;
   balance: number;
-  phoneNumber: string;
   wishlist: [];
   transactions: [];
   creditCardInfo: [];

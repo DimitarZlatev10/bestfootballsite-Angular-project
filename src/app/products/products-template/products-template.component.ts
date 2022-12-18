@@ -13,7 +13,7 @@ import { interval } from 'rxjs/internal/observable/interval';
   styleUrls: ['./products-template.component.css'],
 })
 export class ProductsTemplateComponent implements OnInit, OnDestroy {
-  shirts: Array<IShirt> | any;
+  shirts: Array<IShirt> | any 
   currentTeam: string | null;
   userId: string | any;
   timeInterval: Subscription;
@@ -32,6 +32,7 @@ export class ProductsTemplateComponent implements OnInit, OnDestroy {
   addToWishList(id: string) {
     if (!this.userId) {
       this.router.navigate(['auth/login']);
+      alert('You must be logged in to add products to your wishlist!')
       return;
     }
     this.apiService.addToWishlist(id, this.userId).subscribe({
