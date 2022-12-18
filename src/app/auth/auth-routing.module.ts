@@ -40,3 +40,4 @@ const routes: Routes = [
 ];
 
 export const AuthRouterModule = RouterModule.forChild(routes);
+

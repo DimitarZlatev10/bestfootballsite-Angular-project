@@ -21,7 +21,6 @@ export class RegisterComponent implements OnInit {
     private localService: LocalService
   ) {}
 
-
   isUserNameValid() {
     return /.{3,}/.test(this.username);
   }
@@ -72,7 +71,7 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['/']);
         },
         error: (err) => {
-          // this.errorMessage = err.error.message;
+          this.errorMessage = err.error.message;
           console.error(err);
         },
       });
