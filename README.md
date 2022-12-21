@@ -12,9 +12,9 @@ The site has guest and user authentication - for example , to purchase or add pr
 
 ## Features
 
-Users can add products to their wishlist
-Users can add credit card details
-Users can add balance to their account
-Users can make transactions - add balance or purchase product
+Users can add products to their wishlist,
+Users can add credit card details,
+Users can add balance to their account,
+Users can make transactions - add balance or purchase product,
 
 Most Wishlisted - users and guests can check the most wishlisted products in the site
