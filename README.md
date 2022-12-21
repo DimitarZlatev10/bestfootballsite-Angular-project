@@ -1,27 +1,20 @@
-# SoftUniProject
+# bestfootballsite - SoftUniProject
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.8.
+A football products site build with Angular for my Softuni Angular Exam
 
-## Development server
+## Authentication
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The site has guest and user authentication - for example , to purchase or add product to your wishlist you must be logged in 
 
-## Code scaffolding
+## Back-End for the site
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+`https://github.com/DimitarZlatev10/Mongodb-Back-end-for-bestfootballsite` - this is the Back-End for the site , the information how to use it is in the repository
 
-## Build
+## Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Users can add products to their wishlist
+Users can add credit card details
+Users can add balance to their account
+Users can make transactions - add balance or purchase product
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Most Wishlisted - users and guests can check the most wishlisted products in the site
